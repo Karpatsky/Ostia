@@ -29,7 +29,25 @@ var config = {
 //var runLiveTrading = require("./lib/TradingDesk.js");
 //runLiveTrading(config);
 
+// no Front end button stuff on backend
+// server only cares about the data, doesn't care about UI
+/*
+
+server is a pseudo-database, object that you can do actions on or get info
+client should be able to perform any action on the server (esp. since it's a public api)
+
+docker compose
+  multiple container orchestration
+  docker creates image for server
+  docker creates image for database
+
+nginx
+
+
+*/
+var client_count = 0;
 io.sockets.on('connection', function (socket) {
+  console.log('### Received connection from client (',++client_count,') unique connections');
   async.waterfall([
 
     /* Initialze data */
