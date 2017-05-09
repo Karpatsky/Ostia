@@ -157,7 +157,9 @@ var loadStrategyTrades = function (highchart) {
   console.log('CONNECTION RECEIVED. SERVER RUNNING AT http://localhost:3000');
   highchart.showLoading('<img src="/assets/ostia-ship-blue-loading.png">');
 
+  socket.emit('request-Generate-chart', {
 
+  });
   // INITALIZE CHART WITH HISTORICAL DATA
   socket.on('initializedChartData', function (chartData) {
 
@@ -312,7 +314,9 @@ $(document).ready(function () {
       events: {
         load: function () {
           var self = this;
-          loadStrategyTrades(self);
+          $('#genCharts').click(function() {
+            loadStrategyTrades(self);
+          });
         }
       },
     },
@@ -379,7 +383,9 @@ $(document).ready(function () {
       events: {
         load: function () {
           var self = this;
-          loadPortfolioPerformance(self);
+          $("#genCharts").click(function() {
+            loadPortfolioPerformance(self);
+          });
         }
       },
     },
