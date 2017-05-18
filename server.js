@@ -69,16 +69,12 @@ io.sockets.on('connection', (socket) => {
 // ~~~~~~~~~~~~~~~~~~ App Routes ~~~~~~~~~~~~~~~~~~~~~ //
 app.use(express.static('client'))
 
-app.get('/1', function (req, res) {
-  res.sendfile(path.join(__dirname, '/client/html/index.html'))
-});
-
 app.get('/', function (req, res) {
   res.sendfile(path.join(__dirname, '/client/pages/index.html'))
 });
 
-app.get('/test', function (req, res) {
-  res.sendfile(path.join(__dirname, '/client/html/chartTest.html'))
+app.get('/pulse', function (req, res) {
+  res.sendfile(path.join(__dirname, '/client/pages/pulse.html'))
 });
 // ~~~~~~~~~~~~~~~~ End App Routes ~~~~~~~~~~~~~~~~~~ //
 
