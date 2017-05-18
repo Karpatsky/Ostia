@@ -33,6 +33,10 @@
 
     <!-- <link rel="icon" type="image/png" href="/assets/Ostia-ship-blue.png"> -->
     <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png">
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script src="https://rawgit.com/fkling/JSNetworkX/v0.3.4/jsnetworkx.js"></script>
+    <script src="http://code.jquery.com/jquery.js"></script>
+
 
 </head>
 
@@ -107,8 +111,33 @@
             <!-- /.row -->
             <div class="row">
                 <div class="col-lg-12">
+                  <div id="canvas"></div>
                     <!-- Chart -->
+                    <script>
+                    $(document).ready(function() {
+                      var G = new jsnx.Graph();
 
+                      G.addNode(0);
+                      jsnx.draw(G, {
+                        element: '#canvas',
+                        weighted: true,
+                        edgeStyle: {
+                          'stroke-width': 10
+                        }
+                      },
+                      true
+                    );
+
+                    var i = 1;
+                    setInterval(function() {
+                      console.log('adding node', i);
+                      G.addNode(i);
+                      i++;
+                      // G.redraw();
+                    }, 2000);
+
+        });
+    </script>
                 </div>
             </div>
 
