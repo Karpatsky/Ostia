@@ -61,6 +61,21 @@ io.sockets.on('connection', (socket) => {
     console.log(err);
   });
 });
+
+var p = require('poloniex.js');
+var pol = new p();
+io.sockets.on('connection', (socket) => {
+  console.log('blah');
+  pol.returnOrderBook((err, data) => {
+    console.log(data);
+
+    socket.emit('graphData', {
+      graphData: gd
+    });
+
+  })
+
+});
 // ~~~~~~~~~~~~~~~~~ End App Process ~~~~~~~~~~~~~~~~~~~ //
 
 
